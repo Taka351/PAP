@@ -1,0 +1,398 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f4f9f6 0%, #e8f4f0 100%);
+    color: #2d4542;
+    margin: 0;
+    padding-top: 70px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #2e5f4f 0%, #3a7e6e 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.menu-link {
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.menu-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.logout-button {
+    background: #f25050;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background: #ff3838;
+    transform: translateY(-2px);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 36px;
+    color: #2e5f4f;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #3a7e6e;
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.compartimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.compartimento-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.compartimento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input,
+select {
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #3a7e6e;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(58, 126, 110, 0.1);
+}
+
+.alerta-info {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.config-button {
+    background: #2e5f4f;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.config-button:hover {
+    background: #3a7e6e;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .compartimentos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background: rgba(57, 224, 174, 0.7); /* A more harmonious green */        
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    /* Same padding as other menu links */
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* Space for the indicator */
+}
+
+.dropdown-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    /* Same hover effect as other menu items */
+    transform: translateY(-2px);
+}
+
+/* Add a simple arrow to indicate dropdown */
+.dropdown-button::after {
+    content: '▼';
+    /* Simple down arrow */
+    font-size: 0.7em;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    border-radius: 8px;
+}
+
+.dropdown-content a {
+    color: #2d4542;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Underline the "Sair" link */
+.dropdown-content a[href="logout.php"] {
+    text-decoration: underline;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.form-group {
+margin-bottom: 15px;
+}
+
+.form-input {
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+font-size: 14px;
+}
+
+.form-input:focus {
+border-color: #2e5f4f;
+outline: none;
+box-shadow: 0 0 5px rgba(46, 95, 79, 0.2);
+}
+
+.sugestoes-lista {
+position: absolute;
+background: white;
+border: 1px solid #ddd;
+border-radius: 5px;
+max-height: 200px;
+overflow-y: auto;
+width: 100%;
+display: none;
+z-index: 1000;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sugestao-item {
+padding: 10px;
+cursor: pointer;
+transition: background 0.3s;
+}
+
+.sugestao-item:hover {
+background: #f5f5f5;
+}
+ /* caixa.css */
+
+/* Existing styles remain */
+/* Style for the modal background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Style for the modal content/box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Maximum width to prevent it from being too large */
+    border-radius: 5px;
+    position: relative; /* To position the close button */
+}
+
+/* Style for the close button */
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for the textarea */
+#description {
+    width: 100%; /* Full width within the modal */
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Makes padding and border included in the width */
+    resize: vertical; /* Allows vertical resizing */
+    font-family: 'Poppins', sans-serif; /* Use the same font as the rest of your page */
+}
+
+/* Style for the form buttons */
+#descriptionForm button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#descriptionForm button:hover {
+    opacity: 0.8; /* Slightly darken the button on hover */
+}
+
+/* Add style for the Edit Description button */
+.edit-description-button {
+    background: #2e5f4f;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.edit-description-button:hover {
+    background: #3a7e6e;
+    transform: translateY(-2px);
+}
